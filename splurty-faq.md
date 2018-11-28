@@ -53,3 +53,41 @@ Try the following steps:
 
 #### Answer:
 Try restarting your postgres database by changing to the root directory and running: `/etc/init.d/postgresql restart`.
+
+## Lesson 11: Add a Footer
+
+#### Question:
+> None, or only some, of the CSS styles are applying to my website.
+
+#### Answer:
+Double check that you have followed the bootstrap install process according to the guide in Lesson 7. The bootstrap install documentation differs slightly from the guide in Lesson 7.
+
+## Lesson 15: Building the About Page
+
+#### Question:
+> How do I get rid of old quotes that I don't want to show up on my app?
+
+#### Answer:
+To get rid of data in your local machine, you do the following:
+1) Open the rails console by running `rails console` in the terminal.
+2) Find and destroy the bad quote by using `Quote.find().destroy`. (Note: this command is case sensitive!) You'll need to identify the id number of your bad quote and enter it as a parameter to `find`. For example, if the id of the bad quote is `5`, then you would input `Quote.find(5).destroy`. To view all quotes, you can run `Quote.all` and you should be able to see the id of the quote that you want to get rid of. If there are too many quotes to view in the output after using `Quote.all`, then run `Quote.all.as_json` to view all quotes in a different format (the JSON format).
+
+To get rid of data on your Heroku server, you can do the same steps as above, but in the Heroku rails console. Access this by running `heroku run rails console` in your local machine's terminal.
+
+## Lesson 18: Deploy Your Web App
+
+#### Question:
+> When I run `git push heroku master` there are no errors, but when I check my live website, it doesn't match what I see on my localhost. What should I do?
+
+#### Answer:
+Double check that you have pushed your most recent changes to git before you ran `git push heroku master`. You can check the status of your updated files by running `git status` in the terminal. Heroku will pull changes from git, and not your local machine, so you need to run through the git workflow first before pushing to heroku.
+
+If your site looks otherwise functional, but with different quotes than what is on your localhost, this is perfectly normal. There are two databases, the `development` databse and the `production` database. The quotes that are saved on your `production` database (located on your local machine) will be different from the quotes that are saved on your `production` database (stored on Heroku's servers).
+
+#### Question:
+> When I run `git push heroku master` there is an error message. I can't complete the push to Heroku.
+
+#### Answer:
+Try the following steps first:
+1) Make sure that you have run `heroku run rake db:migrate` and `heroku restart` to run any migrations on your database.
+2) Make sure that you have at least one quote on your production database. To add one in, you can use `heroku run rails console` to enter the Heroku rails console. Then run `Quote.create(saying: "test quote", author: "test author")`.
