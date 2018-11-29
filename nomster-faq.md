@@ -15,10 +15,10 @@ If you'd like to dive into the details, you can bring any styling issues to your
 ## Lesson 47: User Dashboard Page
 
 #### Question:
-> I am getting an error message that says `undefined method 'email' for nil:NilClass` after creating the user profile page and clicking the 'My Profile' link.
+> After creating the user profile page and clicking the 'My Profile' link, I am seeing an error.
 
 #### Answer:
-You are likely seeing this message if you created a place, added comments to the place, then deleted the place. When there is no longer a valid place associated with a comment, `comment.place.name` doesn't work anymore because `place` will be nil.
+You are likely seeing this message if at some point you created a place, added comments to the place, then deleted the place. When there is no longer a valid place associated with a comment, `comment.place.name` doesn't work anymore because `place` will be nil.
 
 To move past this error, try the following steps (unfortunately, this will mean that any data in your development database is lost - it will not affect anything you have on production on Heroku):
 1) Stop your server by hitting `CTRL + C`.
