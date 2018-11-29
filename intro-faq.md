@@ -24,7 +24,7 @@ In order for your background image to display properly, the filename mentioned i
 > Does it matter how you indent and space your code?
 
 #### Answer:
-Long story short, when the code isn't cleanly indented it can be difficult to read and understand. Indentation of code, in the case of using HTML and Ruby, doesn't change how the code works, but it makes it easier to read. For example, in HTML, indenting after each opening tag, such as `<style>`, makes it easier to see where the closing `</style>` tag is. Indentation won't change how your HTML code behaves, but it will make mistakes like having an opening tag that doesn't have a corresponding closing tag, or similar errors.
+Long story short, when the code isn't cleanly indented it can be difficult to read and understand. Indentation of code, in the case of using HTML and Ruby, doesn't change how the code works, but it makes it easier to read. For example, in HTML, indenting after each opening tag, such as `<style>`, makes it easier to see where the closing `</style>` tag is. Indentation won't change how your HTML code behaves, but it will make it easier to spot mistakes like having an opening tag that doesn't have a corresponding closing tag, or similar errors.
 
 ## Lesson 8: Coloring the Text
 
