@@ -1,3 +1,13 @@
+# Comments on Places
+
+## Lesson 39: Add an Image
+
+#### Question:
+> I can successfully upload images via AWS, but they are not showing up in my application. All I see where the images should be is a broken image icon.
+
+#### Answer:
+Check your AWS bucket name. If it has a period in it, that can cause problems with uploading. To fix this, you can build a new AWS bucket that doesn't contain a period and use that (regenerating the  `application.yml` file, etc.). You followed the steps in the lesson correctly, but AWS has an issue with buckets with period in the name.
+
 # Homepage Slider
 
 ## Lesson 46: Styling the Slider
