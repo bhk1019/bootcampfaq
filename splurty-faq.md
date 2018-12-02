@@ -54,6 +54,8 @@ Try the following steps:
 #### Answer:
 Try restarting your postgres database by changing to the root directory and running: `/etc/init.d/postgresql restart`.
 
+# Adding Design
+
 ## Lesson 11: Add a Footer
 
 #### Question:
@@ -61,6 +63,8 @@ Try restarting your postgres database by changing to the root directory and runn
 
 #### Answer:
 Double check that you have followed the bootstrap install process according to the guide in Lesson 7. The bootstrap install documentation on Github differs slightly from the guide in Lesson 7.
+
+# Finishing the Functionality
 
 ## Lesson 15: Building the About Page
 
@@ -73,6 +77,8 @@ To get rid of data in your local machine, you do the following:
 2) Find and destroy the bad quote by using `Quote.find().destroy`. (Note: this command is case sensitive!) You'll need to identify the id number of your bad quote and enter it as a parameter to `find`. For example, if the id of the bad quote is `5`, then you would input `Quote.find(5).destroy`. To view all quotes, you can run `Quote.all` and you should be able to see the id of the quote that you want to get rid of. If there are too many quotes to view in the output after using `Quote.all`, then run `Quote.all.as_json` to view all quotes in a different format (the JSON format).
 
 To get rid of data on your Heroku server, you can do the same steps as above, but in the Heroku rails console. Access this by running `heroku run rails console` in step 1 above instead of `rails console`. Then proceed with step 2.
+
+# Deploying to Production
 
 ## Lesson 18: Deploy Your Web App
 
