@@ -37,8 +37,8 @@ Try these common fixes for Heroku bugs:
 2) Run any migrations by running `heroku run rake db:migrate`.
 3) Reset your entire production database on Heroku by running:
 ```
-heroku run rake db:drop:all
-heroku run rake db:create:all
+heroku restart
+heroku pg:reset DATABASE
 heroku run rake db: migrate
 ```
 
