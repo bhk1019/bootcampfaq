@@ -19,13 +19,15 @@ If these steps don't work, then you can view the error logs that are generated b
 
 ## Project Specific Tips
 
-### Splurty
+### Vagrant Environment Set Up
 
 #### Question:
 > When I run `heroku login`, the terminal hangs/takes a really long time to load.
 
 #### Answer:
 Try running `heroku login --interactive` instead.
+
+### Splurty
 
 #### Question:
 > When I run `git push heroku master` there are no errors, but when I check my live website, it doesn't match what I see on my localhost. What should I do?
