@@ -24,4 +24,4 @@ Another way of looking at it is that it is a safe bet to restart your it after e
 #### Answer:
 If you see this error message, you'll need to use a terminal window inside your web dev environment to navigate into your web application project folder and run the following command:
 
-``kill `cat tmp/pids/server.pid/```
+```kill `cat tmp/pids/server.pid/` ```
