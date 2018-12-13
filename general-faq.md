@@ -17,10 +17,11 @@ Another way of looking at it is that it is a safe bet to restart your it after e
 
 #### Question:
 > I am trying to shut down or start my rails server, but I'm seeing this error message:
+
 > `A server is already running. Check /vagrant/src/your-app-name-here/tmp/pids/server.pid.`
 > `Exiting`
 
 #### Answer:
 If you see this error message, you'll need to use a terminal window inside your web dev environment to navigate into your web application project folder and run the following command:
 
-`kill /`cat tmp/pids/server.pid/``
+``kill `cat tmp/pids/server.pid/```
