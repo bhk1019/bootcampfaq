@@ -62,3 +62,24 @@ From here, you can prevent this issue from occurring in the future by going to y
 
 This change to your place model will ensure that whenever you delete a place, its comments will also be deleted and won't show up to cause problems in your app.
 
+# Adding a Google Map
+
+## Lesson 29: Setting Up the Maps Integration
+
+#### Question:
+> My app will only save the latitude and longitude of some addresses and not others. When I investigate in the rails console, I get a "Google API Error: Over Query Limit" message.
+
+#### Answer:
+Sometimes, if the address saves as `longitude: nil` and `latitude: nil`, it could be because the Geocoder gem could not successfully locate the coordinates of the given address. First double check that your address is correct.
+
+If the problem persists, this error could be related to your Google API Keys. For some users, it will be necessary to enable billing on your Google API accounts in order to increase your query limit.
+
+Follow these steps to see what your query limit is:
+1) Go to console.cloud.google.com.
+2) Click on the APIs & Services dashboard on the left side navigation bar.
+3) Click on the Geocoding API under the API section.
+4) Click on the Quotas tab between Metrics and Credentials.
+5) Scroll down to the Requests subsection. Look for "Requests Per Day". If you cannot change this value above "1", then you may currently only be limited to one geocoding request per day and your Google API Account does not have billing enabled.
+
+In order to enable billing on your Google API Account, follow the steps on this page: https://developers.google.com/maps/documentation/geocoding/usage-and-billing . Then, update the Requests Per Day field as described in the steps above to increase your quota. Keep in mind that your account will be billed after 1000 total requests, so set your Requests Per Day to something reasonable to prevent unwanted charges.
+
