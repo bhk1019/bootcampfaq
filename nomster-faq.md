@@ -35,6 +35,34 @@ After adding a new bucket, you should be able to continue using your existing us
 
 # Sending Emails
 
+## Lesson 42: Adjusting the Mailer
+
+#### Question:
+> I am not receiving emails sent to test my mailer setup.
+
+#### Answer:
+If you're not seeing any error messages in your terminal, this is likely an account setup issue with your email account. At this stage, it's okay if emails aren't sending from your local environment.
+
+For now in your local environment, use the `:test` environment instead in `config/environments/development.rb`. This will look like changing the line that reads:
+
+> `config.action_mailer.delivery_method = :smtp`
+
+to
+
+> `config.action_mailer.delivery_method = :test`
+
+This way, you can see the HTML content of your email in your server window.
+
+In lesson 44, you'll be able to actually send out emails on your production app once you set up emailing on Heroku with Sendgrid.
+
+## Lesson 43: Send Email on Comment
+
+#### Question:
+> I am not receiving emails when I create a comment on my local app.
+
+#### Answer:
+If you aren't seeing any error messages when adding comments to places, you should continue on to lesson 44, where you'll set up and send emails on production with Sendgrid.
+
 ## Lesson 44: Mailing on Production
 
 #### Question:
