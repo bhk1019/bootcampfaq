@@ -38,7 +38,7 @@ to look like this:
 Then refresh your app.
 
 #### Question:
-> I have uploaded photos locally and added `.url` to `<%= image_tag photo.picture %>` in my `places/show.html.erb` file. However, after refreshing I am seeing an error that says `ArgumentError in Places#show. Nil location provided. Can't build URI.`
+> I have uploaded photos locally via Carrierwave and added `.url` to `<%= image_tag photo.picture %>` in my `places/show.html.erb` file. However, after refreshing I am seeing an error that says `ArgumentError in Places#show. Nil location provided. Can't build URI.`
 
 #### Answer:
 This likely means that you have photos in your database that didn't save a `picture` attribute correctly. Follow these steps to remove any existing photos in your database.
