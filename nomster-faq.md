@@ -38,6 +38,18 @@ to look like this:
 Then refresh your app.
 
 #### Question:
+> I have uploaded photos locally and added `.url` to `<%= image_tag photo.picture %>` in my `places/show.html.erb` file. However, after refreshing I am seeing an error that says `ArgumentError in Places#show. Nil location provided. Can't build URI.`
+
+#### Answer:
+This likely means that you have photos in your database that didn't save a `picture` attribute correctly. Follow these steps to remove any existing photos in your database.
+
+1. In your terminal, run `rails console`
+2. In your Rails console, run `Photo.destroy_all`
+3. Exit your Rails console by typing `exit` and hitting `enter`
+
+After following the steps above, refresh your app and try to upload a new photo. Photos should save correctly and render properly now.
+
+#### Question:
 > I can successfully upload images via AWS, but they are not showing up in my application. All I see where the images should be is a broken image icon.
 
 #### Answer:
