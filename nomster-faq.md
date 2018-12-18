@@ -24,6 +24,20 @@ In order to enable billing on your Google API Account, follow the steps on this 
 ## Lesson 39: Add an Image
 
 #### Question:
+> After uploading an image successfully on my local app and going to my `places/show/html.erb` view, I am seeing an error like this: `ActionView::Template::Error (Can't resolve image into URL: undefined method 'to_model'`
+
+#### Answer:
+Go into your `places/show.html.erb` view and change the line that looks like this:
+
+> `<%= image_tag photo.picture %>`
+
+to look like this:
+
+> `<%= image_tag photo.picture.url %>`
+
+Then refresh your app.
+
+#### Question:
 > I can successfully upload images via AWS, but they are not showing up in my application. All I see where the images should be is a broken image icon.
 
 #### Answer:
