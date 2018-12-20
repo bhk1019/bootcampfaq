@@ -1,6 +1,39 @@
+# Adding a Google Map
+
+## Lesson 29: Setting Up the Maps Integration
+
+#### Question:
+> My app will only save the latitude and longitude of some addresses and not others. When I investigate in the rails console, I get a "Google API Error: Over Query Limit" message.
+
+#### Answer:
+Sometimes, if the address saves as `longitude: nil` and `latitude: nil`, it could be because the Geocoder gem could not successfully locate the coordinates of the given address. First double check that your address is correct.
+
+If the problem persists, this error could be related to your Google API Keys. For some users, it will be necessary to enable billing on your Google API accounts in order to increase your query limit.
+
+Follow these steps to see what your query limit is:
+1) Go to console.cloud.google.com.
+2) Click on the APIs & Services dashboard on the left side navigation bar.
+3) Click on the Geocoding API under the API section.
+4) Click on the Quotas tab between Metrics and Credentials.
+5) Scroll down to the Requests subsection. Look for "Requests Per Day". If you cannot change this value above "1", then you may currently only be limited to one geocoding request per day and your Google API Account does not have billing enabled.
+
+In order to enable billing on your Google API Account, follow the steps on this page: https://developers.google.com/maps/documentation/geocoding/usage-and-billing . Then, update the Requests Per Day field as described in the steps above to increase your quota. Keep in mind that your account will be billed after 1000 total requests, so set your Requests Per Day to something reasonable to prevent unwanted charges.
+
 # Comments on Places
 
 ## Lesson 39: Add an Image
+
+#### Question:
+> The image uploading works fine on my local host, but I can't seem to upload images on Heroku after setting up AWS S3. I investigated the buckets on my AWS S3 dashboard and the images are not saving to S3 at all.
+
+#### Answer:
+Make sure that you have enabled public access to your S3 buckets. You can do this by going to your AWS S3 dashboard at https://s3.console.aws.amazon.com/s3/ and doing the following:
+1) Click on the bucket for your project.
+2) Click on the Permissions tab at the top.
+3) Click on Public Access Settings.
+4) Click on "Edit" and make sure all of the checkboxes are UNCHECKED. That is, make sure that you have enabled public access control lists and public bucket policies.
+
+After you have done this, restart your Heroku server using `heroku restart`, and try to upload your images again.
 
 #### Question:
 > I can successfully upload images via AWS, but they are not showing up in my application. All I see where the images should be is a broken image icon.
@@ -62,24 +95,5 @@ From here, you can prevent this issue from occurring in the future by going to y
 
 This change to your place model will ensure that whenever you delete a place, its comments will also be deleted and won't show up to cause problems in your app.
 
-# Adding a Google Map
 
-## Lesson 29: Setting Up the Maps Integration
-
-#### Question:
-> My app will only save the latitude and longitude of some addresses and not others. When I investigate in the rails console, I get a "Google API Error: Over Query Limit" message.
-
-#### Answer:
-Sometimes, if the address saves as `longitude: nil` and `latitude: nil`, it could be because the Geocoder gem could not successfully locate the coordinates of the given address. First double check that your address is correct.
-
-If the problem persists, this error could be related to your Google API Keys. For some users, it will be necessary to enable billing on your Google API accounts in order to increase your query limit.
-
-Follow these steps to see what your query limit is:
-1) Go to console.cloud.google.com.
-2) Click on the APIs & Services dashboard on the left side navigation bar.
-3) Click on the Geocoding API under the API section.
-4) Click on the Quotas tab between Metrics and Credentials.
-5) Scroll down to the Requests subsection. Look for "Requests Per Day". If you cannot change this value above "1", then you may currently only be limited to one geocoding request per day and your Google API Account does not have billing enabled.
-
-In order to enable billing on your Google API Account, follow the steps on this page: https://developers.google.com/maps/documentation/geocoding/usage-and-billing . Then, update the Requests Per Day field as described in the steps above to increase your quota. Keep in mind that your account will be billed after 1000 total requests, so set your Requests Per Day to something reasonable to prevent unwanted charges.
 
