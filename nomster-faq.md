@@ -24,6 +24,32 @@ In order to enable billing on your Google API Account, follow the steps on this 
 ## Lesson 39: Add an Image
 
 #### Question:
+> After uploading an image successfully on my local app and going to my `places/show/html.erb` view, I am seeing an error like this: `ActionView::Template::Error (Can't resolve image into URL: undefined method 'to_model'`
+
+#### Answer:
+Go into your `places/show.html.erb` view and change the line that looks like this:
+
+> `<%= image_tag photo.picture %>`
+
+to look like this:
+
+> `<%= image_tag photo.picture.url %>`
+
+Then refresh your app.
+
+#### Question:
+> I have uploaded photos locally via Carrierwave and added `.url` to `<%= image_tag photo.picture %>` in my `places/show.html.erb` file. However, after refreshing I am seeing an error that says `ArgumentError in Places#show. Nil location provided. Can't build URI.`
+
+#### Answer:
+This likely means that you have photos in your database that didn't save a `picture` attribute correctly. Follow these steps to remove any existing photos in your database.
+
+1. In your terminal, run `rails console`
+2. In your Rails console, run `Photo.destroy_all`
+3. Exit your Rails console by typing `exit` and hitting `enter`
+
+After following the steps above, refresh your app and try to upload a new photo. Photos should save correctly and render properly now.
+
+#### Question:
 > The image uploading works fine on my local host, but I can't seem to upload images on Heroku after setting up AWS S3. I investigated the buckets on my AWS S3 dashboard and the images are not saving to S3 at all.
 
 #### Answer:
@@ -45,19 +71,35 @@ To fix this in your application, you can build a new AWS bucket that doesn't con
 
 After adding a new bucket, you should be able to continue using your existing user and AWS keys. If for some reason that _doesn't_ work, try generating new credentials.
 
-# Homepage Slider
+# Sending Emails
 
-## Lesson 46: Styling the Slider
+## Lesson 42: Adjusting the Mailer
 
 #### Question:
-> The carousel on my app's homepage doesn't look right.
+> I am not receiving emails sent to test my mailer setup.
 
 #### Answer:
-In some cases, the images in your carousel may look stretched, or the CSS may not be applying exactly as expected to your homepage. At this stage, if the rest of your Nomster app is working correctly, you should continue on in the rest of the Nomster lessons.
+If you're not seeing any error messages in your terminal, this is likely an account setup issue with your email account. At this stage, it's okay if emails aren't sending from your local environment.
 
-If you'd like to dive into the details, you can bring any styling issues to your next mentor session.
+For now in your local environment, use the `:test` environment instead in `config/environments/development.rb`. This will look like changing the line that reads:
 
-# Sending Emails
+> `config.action_mailer.delivery_method = :smtp`
+
+to
+
+> `config.action_mailer.delivery_method = :test`
+
+This way, you can see the HTML content of your email in your server window.
+
+In lesson 44, you'll be able to actually send out emails on your production app once you set up emailing on Heroku with Sendgrid.
+
+## Lesson 43: Send Email on Comment
+
+#### Question:
+> I am not receiving emails when I create a comment on my local app.
+
+#### Answer:
+If you aren't seeing any error messages when adding comments to places, you should continue on to lesson 44, where you'll set up and send emails on production with Sendgrid.
 
 ## Lesson 44: Mailing on Production
 
@@ -74,6 +116,18 @@ heroku restart
 heroku pg:reset DATABASE
 heroku run rake db: migrate
 ```
+
+# Homepage Slider
+
+## Lesson 46: Styling the Slider
+
+#### Question:
+> The carousel on my app's homepage doesn't look right.
+
+#### Answer:
+In some cases, the images in your carousel may look stretched, or the CSS may not be applying exactly as expected to your homepage. At this stage, if the rest of your Nomster app is working correctly, you should continue on in the rest of the Nomster lessons.
+
+If you'd like to dive into the details, you can bring any styling issues to your next mentor session.
 
 # User Profile Page
 
@@ -94,6 +148,4 @@ To move past this error, try the following steps (unfortunately, this will mean 
 From here, you can prevent this issue from occurring in the future by going to your place model file (`app/models/place.rb`) and ensuring that the relationship with comments looks like this: `has_many :comments, dependent: :destroy`
 
 This change to your place model will ensure that whenever you delete a place, its comments will also be deleted and won't show up to cause problems in your app.
-
-
 
