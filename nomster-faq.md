@@ -50,6 +50,16 @@ This likely means that you have photos in your database that didn't save a `pict
 After following the steps above, refresh your app and try to upload a new photo. Photos should save correctly and render properly now.
 
 #### Question:
+> The image uploading works fine on my local host without Amazon S3, but I'm getting a 403 Forbidden error when I try to use S3.
+
+#### Answer:
+Try adding the line:
+```
+config.fog_public = false 
+```
+to the `carrierwave.rb` file.
+
+#### Question:
 > The image uploading works fine on my local host, but I can't seem to upload images on Heroku after setting up AWS S3. I investigated the buckets on my AWS S3 dashboard and the images are not saving to S3 at all.
 
 #### Answer:
