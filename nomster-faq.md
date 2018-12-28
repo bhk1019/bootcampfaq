@@ -50,6 +50,16 @@ This likely means that you have photos in your database that didn't save a `pict
 After following the steps above, refresh your app and try to upload a new photo. Photos should save correctly and render properly now.
 
 #### Question:
+> After getting CarrierWave installed, I suddenly cannot do anything to the Photo model in the Rails console. When I try to run a command like `Photo.all` or `Photo.destroy_all`, I get a `NameError` or `uninitialized constant` error.
+
+#### Answer:
+Try adding the following line:
+```
+require 'carrierwave/orm/activerecord'
+```
+to your `environment.rb` file.
+
+#### Question:
 > The image uploading works fine on my local host without Amazon S3, but I'm getting a 403 Forbidden error when I try to use S3.
 
 #### Answer:
