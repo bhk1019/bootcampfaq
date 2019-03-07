@@ -36,6 +36,8 @@ puts "\nok!"
 ```
 5) Once you do that, save the `.bootcamp-github.rb` file. In your terminal, run `ruby .bootcamp-github.rb`.
 
+Alternatively, you can add the SSH keys on your local machine manually. Follow the steps on this page: https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account
+
 #### Question:
 > I have the same problem as the question above, but I'm using Codenvy.
 
@@ -53,6 +55,24 @@ Try the following steps:
 
 #### Answer:
 Try restarting your postgres database by changing to the root directory and running: `/etc/init.d/postgresql restart`.
+
+#### Question:
+> I'm getting various errors when trying to push to Github for the first time. Such as `permission denied (publickey)` or `ssh: could not resolve hostname github.com`.
+
+#### Answer:
+First, run `git remote -v` to check that you have the correct destinations for your remote repository. The output should say `origin git@github.com:username/repository-name.git`, NOT `https://...something`. If you have the HTTPS destination as the remote, run `git remote rm origin` and then `git remote add git@github.com:username/repository.git`, the SSH address for your remote repository.
+
+If the destination is correct, then run `ssh -T git@github.com` to check your SSH connection. If the connection is successful, make sure that the RSA fingerprint that is outputted matches the fingerprint of the key in your Github account. You can check the key by going to github.com -> profile -> settings -> SSH & GPG Keys. If the keys are not the same or if the connection was not successful, you need to connect the correct key by running `cat ~/.ssh/id_rsa.pub` and pasting the output into a new SSH Key. 
+
+# Building the Homepage
+
+## Lesson 6: Show a Random Quote
+
+#### Question:
+> I don't see a random quote when refreshing the page on localhost.
+
+#### Answer:
+Make sure that you have run migrations using `rake db:migrate` and that you have added in multiple Quotes through the rails console like the lesson instructs you to. If you still can only see one quote rather than multiple random ones, try this alternate syntax for selecting a random quote: `@quote = Quote.all.sample` rather than `@quote = Quote.order("RANDOM()").first`.
 
 # Adding Design
 
