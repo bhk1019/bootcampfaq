@@ -59,6 +59,8 @@ require 'carrierwave/orm/activerecord'
 ```
 to your `environment.rb` file.
 
+If you have tried the above fix and your console still throws the same error, kill and restart your Vagrant environment and then try running the same commands in the Rails console again.
+
 #### Question:
 > The image uploading works fine on my local host without Amazon S3, but I'm getting a 403 Forbidden error when I try to use S3.
 
