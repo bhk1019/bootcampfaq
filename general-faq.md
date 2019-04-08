@@ -20,6 +20,11 @@ First, check if the student is on Windows. If they are, then ask them to check t
 1. Having Zoom or some other way to communicate with you on their phone (they can't video call you while in the BIOS)
 2. Sending you the system information for their Windows machine so that you can research how to enable virtualization for their particular machine.
 
+Here's a script you can use:
+```
+Check if Virtualization is enabled on your machine by opening the Task Manager with `ctrl + shift + esc` and tabbing over to the "Performance" tab. There should be a field that says "Virtualization". If it has a value of "Disabled", then you need to enable Virtualization on your machine's BIOS before you can get vagrant up and running. In order to do this, google "Enable Virtualization" for your computer's model, and you should be able to find a straightforward tutorial for this. It's not too complicated, but there is some level of risk because changing some of the settings on the BIOS for your computer could cause serious errors on your machine. If you feel like you need more help with this, reach out to the questions channel and ask a TA to walk you through it. A TA can do this by calling you on Zoom on your phone, for example.
+```
+
 #### Issue:
 > The student is trying to link SSH Keys to their Github account and receiving a 404 error after running this command: `curl https://raw.githubusercontent.com/university-bootcamp/coding-environment/cloud-ide-instructions/github_auth.rb > ~/.bootcamp-github.rb && ruby ~/.bootcamp-github.rb
 `
