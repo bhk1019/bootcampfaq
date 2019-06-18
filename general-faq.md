@@ -40,6 +40,19 @@ The Curriculum Team is currently working on correcting the erroneous command in 
 #### Solution:
 The Github documentation on how to link one's machine with SSH to Github is pretty good and straightforward. Many students have been successful troubleshooting these kinds of issues on their own, but you should familiarize yourself with the process as well. Read through all of the documentation here: https://help.github.com/en/articles/connecting-to-github-with-ssh
 
+### Role 'vagrant' does not exist error.
+
+#### Issue:
+> The student is getting a 'role vagrant does not exist' error when trying to create a new database.
+
+#### Solution:
+Have the student run this in the `rails console`:
+```
+sudo su - postgres
+createuser vagrant -s
+exit
+```
+
 ### The `undefined method current_sign_in_at` Error.
 
 #### Issue:
